@@ -19,6 +19,8 @@ sudo systemctl enable --now snapper-cleanup.timer
 read -t 10 -r -s -p "installing: google-chrome chrome-gnome-shell snapper-gui-git snap-pac-grub"
 yay -S --noconfirm google-chrome chrome-gnome-shell snapper-gui-git snap-pac-grub
 
+
+
 sudo mkdir /etc/pacman.d/hooks
 sudo touch /etc/pacman.d/hooks/50-bootbackup.hook
 echo "[Trigger]"  >> /etc/pacman.d/hooks/50-bootbackup.hook
@@ -34,4 +36,7 @@ echo "Description = Backing up /boot..." >> /etc/pacman.d/hooks/50-bootbackup.ho
 echo "When = PreTransaction" >> /etc/pacman.d/hooks/50-bootbackup.hook
 echo "Exec = /usr/bin/rsync -a --delete /boot /.bootbackup" >> /etc/pacman.d/hooks/50-bootbackup.hook
 
-sudo systemctl start gdm
+read -t 5 -r -s -p "Installation completed, rebooting press Enter to continue, ctrl + c to skip"
+read -t 5 -r -s -p "Installation completed, rebooting press Enter to continue, ctrl + c to skip"
+read -t 5 -r -s -p "Installation completed, rebooting press Enter to continue, ctrl + c to skip"
+reboot
