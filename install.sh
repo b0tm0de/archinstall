@@ -30,13 +30,13 @@ btrfs su cr /mnthome/@home
 unmount /mnthome
 unmount /mnt
 
-mount -o moatime,space_cache=v2,subvol=@ /dev/sda5 /mnt
-mkdir -p /mnt{boot,home,var}
-mount -o moatime,space_cache=v2,subvol=@home /dev/sda6 /mnt/home
-mount -o moatime,space_cache=v2,subvol=@var /dev/sda6 /mnt/var
+mount -o noatime,space_cache=v2,subvol=@ /dev/sda5 /mnt
+mkdir -p /mnt/{boot,home,var}
+mount -o noatime,space_cache=v2,subvol=@home /dev/sda6 /mnt/home
+mount -o noatime,space_cache=v2,subvol=@var /dev/sda6 /mnt/var
 mount /dev/sda1 /mnt/boot
 
-pacstrap /mnt base linux linux-firmware intel-ucode neovim
+pacstrap /mnt base linux linux-firmware intel-ucode neovim git
 genfstab -U /mtn >> /mnt/etc/fstab
 
 read -t 5 -r -s -p "chaging root to /mnt enter to continue ctrl + c to break"
@@ -47,7 +47,7 @@ sudo reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Sy --noconfirm terminus-font ttf-roboto noto-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono
 setfont ter-p32b
 touch ~/.profile
-echo 'setfont ter-p32b' >> ~/.profile
+echo "setfont ter-p32b" >> ~/.profile
 
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 sed -i '177s/.//' /etc/locale.gen
@@ -68,7 +68,7 @@ echo b0tm0de:password | chpasswd
 read -t 30 -r -s -p "now edit, uncomment first %whell group, enter to continue"
 EDITOR=nvim visudo
 
-pacman -S --noconfirm networkmanager network-manager-applet base-devel linux-headers xdg-user-dirs xdg-utils inetutils bind alsa-utils pipewire pipewire-alsa pipewire-pulse bash-completion rsync reflector wget git alacritty meld dialog xdg-user-dirs xdg-utils acpi acpi_call acpid gufw
+pacman -S --noconfirm network-manager-applet base-devel linux-headers xdg-user-dirs xdg-utils inetutils bind alsa-utils pipewire pipewire-alsa pipewire-pulse bash-completion rsync reflector wget alacritty meld dialog xdg-user-dirs xdg-utils gufw
 
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 
@@ -81,13 +81,6 @@ pacman -S --noconfirm grub-btrfs grub os-prober btrfs-tools snapper efibootmgr n
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
-git clone https://aur.archlinux.org/yay.git
-cd yay/
-makepkg -si --noconfirm
-cd ..
-rm -r yay
-
-
 sudo ufw reset --force
 sudo ufw default deny incoming
 sudo utw default allow outgoing
@@ -96,19 +89,11 @@ sudo ufw allow https
 
 systemctl enable ufw
 systemctl enable NetworkManager
+systemctl enable fstrim.timer
 #systemctl enable reflector.timer
-#systemctl enable fstrim.timer
+
 
 # gnome.sh
-sudo pacman -S --noconfirm xorg gdm gnome gnome-extra gnome-tweaks tracker arc-gtk-theme arc-icon-theme
-
-sudo systemctl enable gdm
-
-echo "Gnome and xorg installation completed"
-read -t 10 -r -s -p "Warning! Rebooting, enter to continue or ctrl + c to abort..."
-
-exit
-umount -a
-reboot
+chmod +x gnome.sh
+sh gnome.sh
 # gnome.sh
-
