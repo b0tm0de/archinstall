@@ -8,16 +8,14 @@ lsblk
 
 read -t 20 -r -s -p "Formatting /dev/sda5 as BTRFS press enter to continue, ctrl + c to break"
 read -t 5 -r -s -p "### FORMATTING /DEV/SDA5 ###"
-mkfs.btrfs /dev/sda5
 read -t 5 -r -s -p "### WARNING: FORMATTING /DEV/SDA5 ###"
 mkfs.btrfs /dev/sda5
 echo "Formatted /dev/sda5"
 
 read -t 20 -r -s -p "Formatting /dev/sda6 as BTRFS press enter to continue, ctrl + c to break"
 read -t 5 -r -s -p "### FORMATTING /DEV/SDA5 ###"
-mkfs.btrfs /dev/sda5
 read -t 5 -r -s -p "### WARNING: FORMATTING /DEV/SDA6 !!! ###"
-mkfs.btrfs /dev/sda5
+mkfs.btrfs /dev/sda6
 echo "Formatted /dev/sda6"
 
 mount /dev/sda5 /mnt
@@ -37,17 +35,18 @@ mount -o noatime,space_cache=v2,subvol=@home /dev/sda6 /mnt/home
 mount -o noatime,space_cache=v2,subvol=@var /dev/sda5 /mnt/var
 
 pacstrap /mnt base linux linux-firmware intel-ucode neovim git
-genfstab -U /mtn >> /mnt/etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 
 read -t 5 -r -s -p "chaging root to /mnt enter to continue ctrl + c to break"
 arch-chroot /mnt
 
 sudo reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
 
-pacman -Sy --noconfirm terminus-font ttf-roboto noto-fonts adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono 
-setfont ter-p32b
-touch ~/.profile
-echo "setfont ter-p32b" >> ~/.profile
+pacman -Sy --noconfirm ttf-roboto noto-fonts adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono 
+#pacman -S terminus-font 
+#setfont ter-p32b
+#touch ~/.profile
+#echo "setfont ter-p32b" >> ~/.profile
 
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 sed -i '177s/.//' /etc/locale.gen
