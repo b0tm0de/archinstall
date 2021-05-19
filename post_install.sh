@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 read -t 30 -r -s -p "Starting post install script. Enter to continue, ctrl + c to skip"
 
 git clone https://aur.archlinux.org/yay.git
