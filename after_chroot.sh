@@ -18,7 +18,7 @@ echo "127.0.1.1 b0tarch.localdomain b0tarch" >> /etc/hosts
 echo "KEYMAP=trq" >> /etc/vconsole.conf
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 sleep 1
-sed -ir '177s/^.{1}//' /etc/locale.gen
+sed -i '177s/^.//' /etc/locale.gen
 sleep 1
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 nvim /etc/locale.gen
@@ -30,14 +30,14 @@ echo "Enter password for b0tm0de"
 useradd -mG wheel b0tm0de
 passwd b0tm0de
 sleep 1
-sed -ir '82s/^.{2}//' /etc/sudoers
+sed -i '82s/^.//' /etc/sudoers
 sleep 1
-
+sed -i '82s/^.//' /etc/sudoers
+sleep 1
 read -t 30 -r -s -p "now edit, uncomment first %wheel group, enter to continue"
 EDITOR=nvim visudo
 
-read -t 15 -r -s -p "now edit /etc/mkinitcpio.conf add BTRFS and NVIDIA in MODULES press enter to continue"
-read -t 15 -r -s -p "BTRFS NVIDIA NVIDIA_MODESET NVIDIA_UVM NVIDIA_DRM"
+read -t 60 -r -s -p "BTRFS NVIDIA NVIDIA_MODESET NVIDIA_UVM NVIDIA_DRM"
 nvim /etc/mkinitcpio.conf
 
 mkdir /etc/pacman.d/hooks
