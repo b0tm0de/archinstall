@@ -58,9 +58,6 @@ echo "127.0.1.1 b0tarch.localdomain b0tarch" >> /etc/hosts
 echo "KEYMAP=trq" >> /etc/vconsole.conf
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 sed -i '177s/.//' /etc/locale.gen
-echo "LANGUAGE=en_US.UTF-8" >> /etc/locale.conf
-echo "LC_ALL=en_US.UTF-8" >> /etc/locale.conf
-echo "LC_MESSAGES=en_US.UTF-8" >> /etc/locale.conf
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 nvim /etc/locale.gen
 locale-gen
