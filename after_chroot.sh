@@ -33,6 +33,8 @@ pacman -S --noconfirm network-manager-applet base-devel linux-headers xdg-user-d
 
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 
+pacman -S --noconfirm grub-btrfs grub os-prober btrfs-tools snapper efibootmgr ntfs-3g dosfstools mtools 
+
 read -t 15 -r -s -p "now edit /etc/mkinitcpio.conf add BTRFS and NVIDIA in MODULES press enter to continue"
 read -t 15 -r -s -p "BTRFS NVIDIA NVIDIA_MODESET NVIDIA_UVM NVIDIA_DRM"
 sudo vim /etc/mkinitcpio.conf
@@ -56,13 +58,10 @@ echo "Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; d
 
 mkinitcpio -p linux
 
-pacman -S --noconfirm grub-btrfs grub os-prober btrfs-tools snapper efibootmgr ntfs-3g dosfstools mtools 
-
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 read -t 30 -r -s -p 'now edit /etc/default/grub add GRUB_CMDLINE_LINUX_DEFAULT="nvidia-drm.modeset=1"'
 vim /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
-
 
 sudo ufw reset --force
 sudo ufw default deny incoming
@@ -74,7 +73,6 @@ systemctl enable ufw
 systemctl enable NetworkManager
 systemctl enable fstrim.timer
 #systemctl enable reflector.timer
-
 
 # gnome.sh
 chmod +x ./gnome.sh
