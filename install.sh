@@ -6,7 +6,6 @@ loadkeys trq
 cd /
 
 reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
-pacman -Sy
 
 lsblk
 
