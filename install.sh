@@ -40,4 +40,5 @@ set -e
 genfstab -U /mnt >> /mnt/etc/fstab
 
 read -t 5 -r -s -p "chaging root to /mnt enter to continue ctrl + c to break"
+sleep 1
 arch-chroot /mnt
