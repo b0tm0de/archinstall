@@ -3,11 +3,11 @@
 set -e
 
 su -l b0tm0de
-cd /
+cd ~
 
 read -t 30 -r -s -p "Starting post install script. Enter to continue, ctrl + c to skip"
 
-git clone https://aur.archlinux.org/yay.git
+sudo git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd ..
@@ -17,8 +17,8 @@ mkdir /.snapshots
 chmod a+rx /.snapshots
 chown :b0tm0de /.snapshots
 
-systemctl enable --now snapper-timeline.timer
-systemctl enable --now snapper-cleanup.timer
+sudo systemctl enable --now snapper-timeline.timer
+sudo systemctl enable --now snapper-cleanup.timer
 
 read -t 10 -r -s -p "installing: google-chrome chrome-gnome-shell snapper-gui-git snap-pac-grub"
 yay -S --noconfirm google-chrome chrome-gnome-shell snapper-gui-git snap-pac-grub
@@ -38,8 +38,8 @@ echo "Description = Backing up /boot..." >> /etc/pacman.d/hooks/50-bootbackup.ho
 echo "When = PreTransaction" >> /etc/pacman.d/hooks/50-bootbackup.hook
 echo "Exec = /usr/bin/rsync -a --delete /boot /.bootbackup" >> /etc/pacman.d/hooks/50-bootbackup.hook
 
-sudo rm -r yay
-sudo rm -r archinstall
+sudo rm -r ~/yay
+sudo rm -r /archinstall
 
 read -t 15 -r -s -p "Installation completed, rebooting press Enter to continue, ctrl + c to skip"
 reboot
