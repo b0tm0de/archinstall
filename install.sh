@@ -27,6 +27,7 @@ btrfs su cr /mnt/@var
 btrfs su cr /mnthome/@home
 umount /mnthome
 umount /mnt
+rm -r /mnthome
 
 mount -o noatime,space_cache=v2,subvol=@ /dev/sda5 /mnt
 mkdir -p /mnt/{boot,home,var}
