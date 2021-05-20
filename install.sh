@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+
 loadkeys trq
 cd /
 
@@ -37,6 +37,8 @@ pacstrap /mnt base linux neovim git
 genfstab -U /mnt >> /mnt/etc/fstab
 #linux-firmware intel-ucode
 
+set -e
+
 read -t 5 -r -s -p "chaging root to /mnt enter to continue ctrl + c to break"
 arch-chroot /mnt
 
@@ -68,6 +70,9 @@ echo root:password | chpasswd
 useradd -mG whell b0tm0de
 echo "Enter password for user b0tm0de"
 echo b0tm0de:password | chpasswd
+
+sed -i '82s/.//' /etc/locale.gen
+sed -i '82s/.//' /etc/locale.gen
 
 read -t 30 -r -s -p "now edit, uncomment first %whell group, enter to continue"
 EDITOR=nvim visudo
