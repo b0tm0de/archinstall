@@ -9,6 +9,6 @@ sudo pacman -Syu --noconfirm gnome-tweaks tracker3 arc-gtk-theme arc-icon-theme 
 sudo systemctl enable gdm
 
 # post_install.sh
-chmod +x ./post_install.sh
-sh ./post_install.sh
+chmod +x /archinstall/post_install.sh
+sh /archinstall/post_install.sh
 # post_install.sh
