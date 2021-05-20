@@ -37,7 +37,7 @@ sleep 1
 read -t 30 -r -s -p "now edit, uncomment first %wheel group, enter to continue"
 EDITOR=nvim visudo
 
-read -t 60 -r -s -p "BTRFS NVIDIA NVIDIA_MODESET NVIDIA_UVM NVIDIA_DRM"
+read -t 60 -r -s -p "btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 nvim /etc/mkinitcpio.conf
 
 mkdir /etc/pacman.d/hooks
