@@ -4,6 +4,10 @@ set -e
 
 reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
 
+pacman -S --noconfirm network-manager-applet base-devel linux-headers xdg-user-dirs xdg-utils inetutils bind alsa-utils pipewire bash-completion rsync reflector wget alacritty meld dialog xdg-user-dirs xdg-utils gufw
+#pacman -S pipewire-alsa pipewire-pulse
+#pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
+pacman -S --noconfirm grub-btrfs grub os-prober btrfs-tools snapper efibootmgr ntfs-3g dosfstools mtools 
 #pacman -Sy --noconfirm ttf-roboto noto-fonts adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono 
 
 echo "b0tarch" >> /etc/hostname
@@ -15,7 +19,7 @@ echo "KEYMAP=trq" >> /etc/vconsole.conf
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 sed -i '177s/.//' /etc/locale.gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
-vim /etc/locale.gen
+nvim /etc/locale.gen
 locale-gen
 
 echo "Enter password for root"
@@ -25,19 +29,11 @@ useradd -mG wheel b0tm0de
 passwd b0tm0de
 
 read -t 30 -r -s -p "now edit, uncomment first %wheel group, enter to continue"
-EDITOR=vim visudo
-
-pacman -S --noconfirm network-manager-applet base-devel linux-headers xdg-user-dirs xdg-utils inetutils bind alsa-utils pipewire bash-completion rsync reflector wget alacritty meld dialog xdg-user-dirs xdg-utils gufw
-
-#pacman -S pipewire-alsa pipewire-pulse
-
-pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
-
-pacman -S --noconfirm grub-btrfs grub os-prober btrfs-tools snapper efibootmgr ntfs-3g dosfstools mtools 
+EDITOR=nvim visudo
 
 read -t 15 -r -s -p "now edit /etc/mkinitcpio.conf add BTRFS and NVIDIA in MODULES press enter to continue"
 read -t 15 -r -s -p "BTRFS NVIDIA NVIDIA_MODESET NVIDIA_UVM NVIDIA_DRM"
-sudo vim /etc/mkinitcpio.conf
+sudo nvim /etc/mkinitcpio.conf
 
 mkdir /etc/pacman.d/hooks
 touch /etc/pacman.d/hooks/nvidia.hook
