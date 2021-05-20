@@ -3,17 +3,17 @@
 set -e
 loadkeys trq
 
-refactor -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
+reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Sy
 
 lsblk
 
-read -t 20 -r -s -p "Formatting /dev/sda5 as BTRFS press enter to continue, ctrl + c to break"
+read -t 20 -r -s -p "Formatting /dev/sda5 as BTRFS press enter to continue, ctrl + c to break "
 read -t 10 -r -s -p " ### WARNING: FORMATTING /DEV/SDA5 ###"
 mkfs.btrfs /dev/sda5
 echo "Formatted /dev/sda5"
 
-read -t 20 -r -s -p "Formatting /dev/sda6 as BTRFS press enter to continue, ctrl + c to break"
+read -t 20 -r -s -p "Formatting /dev/sda6 as BTRFS press enter to continue, ctrl + c to break "
 read -t 10 -r -s -p " ### WARNING: FORMATTING /DEV/SDA6 !!! ###"
 mkfs.btrfs /dev/sda6
 echo "Formatted /dev/sda6"
@@ -50,6 +50,7 @@ pacman -Sy --noconfirm ttf-roboto noto-fonts adobe-source-code-pro-fonts adobe-s
 
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 sed -i '177s/.//' /etc/locale.gen
+nvim /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "KEYMAP=trq" >> /etc/vconsole.conf
