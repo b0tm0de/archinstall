@@ -1,5 +1,7 @@
 #!/bin/bash
--e
+
+set -e
+
 loadkeys trq
 cd /
 
@@ -34,9 +36,9 @@ mount /dev/sda1 /mnt/boot
 mount -o noatime,space_cache=v2,subvol=@home /dev/sda6 /mnt/home
 mount -o noatime,space_cache=v2,subvol=@var /dev/sda5 /mnt/var
 
-+e
-pacstrap /mnt base linux linux-firmware intel-ucode vim btrfs-progs git
--e
+set +e
+pacstrap /mnt base linux linux-firmware intel-ucode neovim git
+set -e
 genfstab -U /mnt >> /mnt/etc/fstab
 
 read -t 5 -r -s -p "chaging root to /mnt enter to continue ctrl + c to break"
