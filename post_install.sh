@@ -38,8 +38,8 @@ echo "Description = Backing up /boot..." >> /etc/pacman.d/hooks/50-bootbackup.ho
 echo "When = PreTransaction" >> /etc/pacman.d/hooks/50-bootbackup.hook
 echo "Exec = /usr/bin/rsync -a --delete /boot /.bootbackup" >> /etc/pacman.d/hooks/50-bootbackup.hook
 
-rm -r yay
-rm -r archinstall
+sudo rm -r yay
+sudo rm -r archinstall
 
 read -t 15 -r -s -p "Installation completed, rebooting press Enter to continue, ctrl + c to skip"
 reboot
