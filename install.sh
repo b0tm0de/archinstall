@@ -35,7 +35,7 @@ mount -o noatime,space_cache=v2,subvol=@home /dev/sda6 /mnt/home
 mount -o noatime,space_cache=v2,subvol=@var /dev/sda5 /mnt/var
 
 set +e
-pacstrap /mnt base linux linux-firmware intel-ucode neovim git
+pacstrap /mnt base linux linux-firmware intel-ucode neovim git reflector
 set -e
 genfstab -U /mnt >> /mnt/etc/fstab
 
