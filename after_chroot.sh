@@ -4,7 +4,7 @@ set -e
 
 reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
 
-pacman -S --noconfirm network-manager-applet xdg-user-dirs xdg-utils inetutils bind alsa-utils pipewire bash-completion rsync reflector wget alacritty meld dialog xdg-user-dirs xdg-utils gufw
+pacman -S --noconfirm network-manager-applet xdg-user-dirs xdg-utils inetutils bind alsa-utils pipewire bash-completion rsync reflector wget alacritty meld dialog xdg-user-dirs xdg-utils iptables-nft gufw
 #pacman -S pipewire-alsa pipewire-pulse
 #pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 pacman -S --noconfirm grub-btrfs grub os-prober btrfs-progs snapper efibootmgr ntfs-3g dosfstools mtools 
