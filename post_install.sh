@@ -7,10 +7,10 @@ cd ~
 
 read -t 30 -r -s -p "Starting post install script. Enter to continue, ctrl + c to skip"
 
-sudo git clone https://aur.archlinux.org/yay.git
+git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
-cd ..
+cd /
 
 snapper -c root create-config /
 mkdir /.snapshots
