@@ -66,7 +66,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ufw reset --force
 ufw default deny incoming
-utw default allow outgoing
+ufw default allow outgoing
 ufw allow http
 ufw allow https
 
