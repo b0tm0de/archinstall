@@ -21,10 +21,10 @@ locale-gen
 echo "Enter password for root"
 passwd
 echo "Enter password for b0tm0de"
-useradd -mG whell b0tm0de
+useradd -mG wheel b0tm0de
 passwd b0tm0de
 
-read -t 30 -r -s -p "now edit, uncomment first %whell group, enter to continue"
+read -t 30 -r -s -p "now edit, uncomment first %wheel group, enter to continue"
 EDITOR=vim visudo
 
 pacman -S --noconfirm network-manager-applet base-devel linux-headers xdg-user-dirs xdg-utils inetutils bind alsa-utils pipewire bash-completion rsync reflector wget alacritty meld dialog xdg-user-dirs xdg-utils gufw
