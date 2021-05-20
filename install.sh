@@ -42,9 +42,6 @@ sleep 1
 genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 sleep 1
-read -t 10 -r -s -p "chaging root to /mnt enter to continue ctrl + c to break"
-sleep 1
-arch-chroot /mnt
-arch-chroot /mnt
+read -t 15 -r -s -p "chaging root to /mnt enter to continue ctrl + c to break"
 sleep 1
 arch-chroot /mnt
