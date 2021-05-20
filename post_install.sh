@@ -3,6 +3,7 @@
 set -e
 
 su -l b0tm0de
+cd /
 
 read -t 30 -r -s -p "Starting post install script. Enter to continue, ctrl + c to skip"
 
@@ -37,6 +38,8 @@ echo "Depends = rsync" >> /etc/pacman.d/hooks/50-bootbackup.hook
 echo "Description = Backing up /boot..." >> /etc/pacman.d/hooks/50-bootbackup.hook
 echo "When = PreTransaction" >> /etc/pacman.d/hooks/50-bootbackup.hook
 echo "Exec = /usr/bin/rsync -a --delete /boot /.bootbackup" >> /etc/pacman.d/hooks/50-bootbackup.hook
+
+rm -r archinstall
 
 read -t 15 -r -s -p "Installation completed, rebooting press Enter to continue, ctrl + c to skip"
 reboot
