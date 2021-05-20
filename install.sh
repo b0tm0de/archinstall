@@ -2,7 +2,7 @@
 
 set -e
 loadkeys trq
-cd ..
+cd /
 
 reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Sy
@@ -26,8 +26,8 @@ btrfs su cr /mnt/@
 btrfs su cr /mnt/@snapshots
 btrfs su cr /mnt/@var
 btrfs su cr /mnthome/@home
-unmount /mnthome
-unmount /mnt
+umount /mnthome
+umount /mnt
 
 mount -o noatime,space_cache=v2,subvol=@ /dev/sda5 /mnt
 mkdir -p /mnt/{boot,home,var}
