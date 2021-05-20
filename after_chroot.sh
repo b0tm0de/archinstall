@@ -61,7 +61,7 @@ mkinitcpio -p linux
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 read -t 60 -r -s -p 'now edit /etc/default/grub add GRUB_CMDLINE_LINUX_DEFAULT="nvidia-drm.modeset=1"'
-vim /etc/default/grub
+nvim /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 ufw reset --force
