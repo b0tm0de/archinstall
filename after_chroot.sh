@@ -2,7 +2,7 @@
 
 set -e
 
-sudo reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
+reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
 
 #pacman -Sy --noconfirm ttf-roboto noto-fonts adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono 
 
@@ -63,11 +63,11 @@ read -t 30 -r -s -p 'now edit /etc/default/grub add GRUB_CMDLINE_LINUX_DEFAULT="
 vim /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-sudo ufw reset --force
-sudo ufw default deny incoming
-sudo utw default allow outgoing
-sudo ufw allow http
-sudo ufw allow https
+ufw reset --force
+ufw default deny incoming
+utw default allow outgoing
+ufw allow http
+ufw allow https
 
 systemctl enable ufw
 systemctl enable NetworkManager
