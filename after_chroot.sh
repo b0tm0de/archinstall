@@ -76,6 +76,6 @@ systemctl enable fstrim.timer
 #systemctl enable reflector.timer
 
 # gnome.sh
-chmod +x ./gnome.sh
-sh ./gnome.sh
+chmod +x /archinstall/gnome.sh
+sh /archinstall/gnome.sh
 # gnome.sh
