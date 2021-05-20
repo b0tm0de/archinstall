@@ -10,13 +10,13 @@ makepkg -si --noconfirm
 cd ..
 rm -r yay
 
-sudo snapper -c root create-config /
-sudo mkdir /.snapshots
-sudo chmod a+rx /.snapshots
-sudo chown :b0tm0de /.snapshots
+snapper -c root create-config /
+mkdir /.snapshots
+chmod a+rx /.snapshots
+chown :b0tm0de /.snapshots
 
-sudo systemctl enable --now snapper-timeline.timer
-sudo systemctl enable --now snapper-cleanup.timer
+systemctl enable --now snapper-timeline.timer
+systemctl enable --now snapper-cleanup.timer
 
 read -t 10 -r -s -p "installing: google-chrome chrome-gnome-shell snapper-gui-git snap-pac-grub"
 yay -S --noconfirm google-chrome chrome-gnome-shell snapper-gui-git snap-pac-grub
