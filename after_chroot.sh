@@ -4,11 +4,10 @@ set -e
 
 reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
 
-pacman -S --noconfirm network-manager-applet xdg-user-dirs xdg-utils inetutils bind alsa-utils pipewire bash-completion rsync reflector wget alacritty meld dialog xdg-user-dirs xdg-utils iptables-nft gufw
-#pacman -S pipewire-alsa pipewire-pulse
-#pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
-pacman -S --noconfirm grub-btrfs grub os-prober btrfs-progs snapper efibootmgr ntfs-3g dosfstools mtools 
-#pacman -Sy --noconfirm ttf-roboto noto-fonts adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono 
+pacman -Sy iptables-nft network-manager-applet xdg-user-dirs xdg-utils inetutils bind alsa-utils pipewire bash-completion rsync reflector wget alacritty meld dialog xdg-user-dirs xdg-utils gufw pipewire-alsa pipewire-pulse
+pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
+pacman -S --noconfirm grub-btrfs grub os-prober btrfs-progs efibootmgr ntfs-3g dosfstools mtools 
+pacman -S --noconfirm ttf-roboto noto-fonts adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono 
 
 echo "b0tarch" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
@@ -34,8 +33,6 @@ sed -i '82s/^.//' /etc/sudoers
 sleep 1
 sed -i '82s/^.//' /etc/sudoers
 sleep 1
-read -t 30 -r -s -p "now edit, uncomment first %wheel group, enter to continue"
-EDITOR=nvim visudo
 
 read -t 60 -r -s -p "btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 nvim /etc/mkinitcpio.conf
