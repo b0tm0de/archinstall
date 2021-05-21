@@ -43,7 +43,6 @@ sleep 1
 pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode neovim git reflector
 sleep 1
 genfstab -U /mnt >> /mnt/etc/fstab
-cat /mnt/etc/fstab
 sleep 1
 read -t 15 -r -s -p "chaging root to /mnt enter to continue ctrl + c to break"
 sleep 1
