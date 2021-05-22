@@ -16,10 +16,20 @@ echo "127.0.1.1 b0tarch.localdomain b0tarch" >> /etc/hosts
 
 echo "KEYMAP=trq" >> /etc/vconsole.conf
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
-sleep 1
-sed -i '177s/^.//' /etc/locale.gen
-sleep 1
+sleep 0.5
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+echo "tr_TR.UTF-8 UTF-8" >> /etc/locale.gen
+sleep 0.5
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+echo "LC_ADDRESS=tr_TR.UTF-8" >> /etc/locale.conf
+echo "LC_IDENTIFICATION=tr_TR.UTF-8" >> /etc/locale.conf
+echo "LC_MEASUREMENT=tr_TR.UTF-8" >> /etc/locale.conf
+echo "LC_MONETARY=tr_TR.UTF-8" >> /etc/locale.conf
+echo "LC_NAME=tr_TR.UTF-8" >> /etc/locale.conf
+echo "LC_NUMERIC=tr_TR.UTF-8" >> /etc/locale.conf
+echo "LC_PAPER=tr_TR.UTF-8" >> /etc/locale.conf
+echo "LC_TELEPHONE=tr_TR.UTF-8" >> /etc/locale.conf
+echo "LC_TIME=tr_TR.UTF-8" >> /etc/locale.conf
 nvim /etc/locale.gen
 locale-gen
 
