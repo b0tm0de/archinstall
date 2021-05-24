@@ -1,1 +1,1 @@
-pacman -S plasma-desktop plasma-nm plasma-pa dolphin konsole
+pacman -S plasma-desktop plasma-nm plasma-pa dolphin konsole kdialog
