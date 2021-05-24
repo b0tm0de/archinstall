@@ -2,7 +2,9 @@
 
 set -e
 
-reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
+echo "Server = http://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+echo "Server = http://ftp.linux.org.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+echo "Server = rsync://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 
 pacman -Sy iptables-nft network-manager-applet inetutils bind alsa-utils pipewire bash-completion rsync reflector wget alacritty meld dialog xdg-user-dirs xdg-utils gufw pipewire-alsa pipewire-pulse
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
@@ -21,15 +23,15 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 echo "tr_TR.UTF-8 UTF-8" >> /etc/locale.gen
 sleep 0.5
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
-echo "LC_ADDRESS=tr_TR.UTF-8" >> /etc/locale.conf
-echo "LC_IDENTIFICATION=tr_TR.UTF-8" >> /etc/locale.conf
-echo "LC_MEASUREMENT=tr_TR.UTF-8" >> /etc/locale.conf
-echo "LC_MONETARY=tr_TR.UTF-8" >> /etc/locale.conf
-echo "LC_NAME=tr_TR.UTF-8" >> /etc/locale.conf
-echo "LC_NUMERIC=tr_TR.UTF-8" >> /etc/locale.conf
-echo "LC_PAPER=tr_TR.UTF-8" >> /etc/locale.conf
-echo "LC_TELEPHONE=tr_TR.UTF-8" >> /etc/locale.conf
-echo "LC_TIME=tr_TR.UTF-8" >> /etc/locale.conf
+#echo "LC_ADDRESS=tr_TR.UTF-8" >> /etc/locale.conf
+#echo "LC_IDENTIFICATION=tr_TR.UTF-8" >> /etc/locale.conf
+#echo "LC_MEASUREMENT=tr_TR.UTF-8" >> /etc/locale.conf
+#echo "LC_MONETARY=tr_TR.UTF-8" >> /etc/locale.conf
+#echo "LC_NAME=tr_TR.UTF-8" >> /etc/locale.conf
+#echo "LC_NUMERIC=tr_TR.UTF-8" >> /etc/locale.conf
+#echo "LC_PAPER=tr_TR.UTF-8" >> /etc/locale.conf
+#echo "LC_TELEPHONE=tr_TR.UTF-8" >> /etc/locale.conf
+#echo "LC_TIME=tr_TR.UTF-8" >> /etc/locale.conf
 nvim /etc/locale.gen
 locale-gen
 
@@ -47,6 +49,7 @@ sleep 1
 read -t 60 -r -s -p "btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 nvim /etc/mkinitcpio.conf
 
+# nvidia hook for update mkinitcpio (if kernel or driver update happens)
 mkdir /etc/pacman.d/hooks
 touch /etc/pacman.d/hooks/nvidia.hook
 echo "[Trigger]" >> /etc/pacman.d/hooks/nvidia.hook
@@ -71,18 +74,12 @@ read -t 60 -r -s -p 'now edit /etc/default/grub add GRUB_CMDLINE_LINUX_DEFAULT="
 nvim /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-ufw reset --force
-ufw default deny incoming
-ufw default allow outgoing
-ufw allow http
-ufw allow https
-
 systemctl enable ufw
 systemctl enable NetworkManager
 systemctl enable fstrim.timer
 #systemctl enable reflector.timer
 
-# gnome.sh
-chmod +x /archinstall/gnome.sh
-sh /archinstall/gnome.sh
-# gnome.sh
+# plasma.sh
+chmod +x /archinstall/plasma.sh
+sh /archinstall/plasma.sh
+# plasma.sh
