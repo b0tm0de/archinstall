@@ -41,7 +41,7 @@ mount -o noatime,space_cache=v2,subvol=@home /dev/sda5 /mnt/home
 set +e
 sleep 1
 
-pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode nano git reflector
+pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode nvim git wget
 sleep 1
 genfstab -U /mnt >> /mnt/etc/fstab
 sleep 1
