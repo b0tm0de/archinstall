@@ -34,13 +34,12 @@ mkdir -p /mnt/{boot,home,var,tmp}
 mount /dev/sda1 /mnt/boot
 mount -o noatime,space_cache=v2,subvol=@var /dev/sda4 /mnt/var
 mount -o noatime,space_cache=v2,subvol=@tmp /dev/sda4 /mnt/tmp
-mount -o noatime,space_cache=v2,subvol=@snapshots /dev/sda4 /.snapshots
 mount -o noatime,space_cache=v2,subvol=@home /dev/sda5 /mnt/home
 
 set +e
 sleep 1
 
-pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode neovim git reflector
+pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode nano git reflector
 sleep 1
 genfstab -U /mnt >> /mnt/etc/fstab
 sleep 1
