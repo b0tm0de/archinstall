@@ -5,7 +5,9 @@ set -e
 loadkeys trq
 cd /
 
-reflector -c Turkey -a 24 --sort rate --save /etc/pacman.d/mirrorlist
+echo "Server = http://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+echo "Server = http://ftp.linux.org.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+echo "Server = rsync://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 
 lsblk
 
