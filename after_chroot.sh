@@ -69,7 +69,7 @@ echo "Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; d
 
 mkinitcpio -p linux
 
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 read -t 60 -r -s -p 'now edit /etc/default/grub add GRUB_CMDLINE_LINUX_DEFAULT="nvidia-drm.modeset=1"'
 nvim /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
