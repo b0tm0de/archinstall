@@ -23,7 +23,6 @@ mount /dev/sda4 /mnt
 mkdir mnthome
 mount /dev/sda5 /mnthome
 btrfs su cr /mnt/@
-btrfs su cr /mnt/@snapshots
 btrfs su cr /mnt/@var
 btrfs su cr /mnt/@tmp
 btrfs su cr /mnthome/@home
@@ -33,7 +32,8 @@ rm -r /mnthome
 
 mount -o noatime,space_cache=v2,subvol=@ /dev/sda4 /mnt
 mkdir -p /mnt/{boot,home,var,tmp}
-mount /dev/sda1 /mnt/boot
+mkdir /mnt/boot/efi
+mount /dev/sda1 /mnt/boot/efi
 mount -o noatime,space_cache=v2,subvol=@var /dev/sda4 /mnt/var
 mount -o noatime,space_cache=v2,subvol=@tmp /dev/sda4 /mnt/tmp
 mount -o noatime,space_cache=v2,subvol=@home /dev/sda5 /mnt/home
@@ -41,7 +41,7 @@ mount -o noatime,space_cache=v2,subvol=@home /dev/sda5 /mnt/home
 set +e
 sleep 1
 
-pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode nvim git wget
+pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode neovim git wget
 sleep 1
 genfstab -U /mnt >> /mnt/etc/fstab
 sleep 1
