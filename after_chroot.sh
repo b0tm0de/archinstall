@@ -32,7 +32,6 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 #echo "LC_PAPER=tr_TR.UTF-8" >> /etc/locale.conf
 #echo "LC_TELEPHONE=tr_TR.UTF-8" >> /etc/locale.conf
 #echo "LC_TIME=tr_TR.UTF-8" >> /etc/locale.conf
-nvim /etc/locale.gen
 locale-gen
 
 echo "Enter password for root"
@@ -40,13 +39,13 @@ passwd
 echo "Enter password for b0tm0de"
 useradd -mG wheel b0tm0de
 passwd b0tm0de
-sleep 1
+sleep 0.5
 sed -i '82s/^.//' /etc/sudoers
-sleep 1
+sleep 0.5
 sed -i '82s/^.//' /etc/sudoers
-sleep 1
+sleep 0.5
 
-read -t 60 -r -s -p "btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm"
+read -t 60 -r -s -p "btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm -fsck"
 nvim /etc/mkinitcpio.conf
 
 # nvidia hook for update mkinitcpio (if kernel or driver update happens)
