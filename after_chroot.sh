@@ -6,7 +6,7 @@ echo "Server = http://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /etc
 echo "Server = http://ftp.linux.org.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 echo "Server = rsync://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 
-pacman -Sy iptables-nft network-manager-applet inetutils bind alsa-utils pipewire bash-completion alacritty meld xdg-user-dirs xdg-utils gufw pipewire-alsa pipewire-pulse
+pacman -Sy iptables-nft network-manager-applet inetutils bind alsa-utils pipewire bash-completion alacritty meld xdg-user-dirs xdg-utils ufw pipewire-alsa pipewire-pulse
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 pacman -S --noconfirm grub-btrfs grub os-prober btrfs-progs efibootmgr ntfs-3g dosfstools mtools 
 pacman -S --noconfirm ttf-roboto noto-fonts adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono 
@@ -74,12 +74,12 @@ read -t 60 -r -s -p 'now edit /etc/default/grub add GRUB_CMDLINE_LINUX_DEFAULT="
 nvim /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-systemctl enable ufw
+#systemctl enable ufw
 systemctl enable NetworkManager
 systemctl enable fstrim.timer
 #systemctl enable reflector.timer
 
 # plasma.sh
-chmod +x /archinstall/plasma.sh
-sh /archinstall/plasma.sh
+chmod +x archinstall/plasma.sh
+sh archinstall/plasma.sh
 # plasma.sh
