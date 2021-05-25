@@ -39,12 +39,12 @@ mount -o noatime,space_cache=v2,subvol=@tmp /dev/sda4 /mnt/tmp
 mount -o noatime,space_cache=v2,subvol=@home /dev/sda5 /mnt/home
 
 set +e
-sleep 1
+sleep 0.5
 
 pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode neovim git wget
-sleep 1
+sleep 0.5
 genfstab -U /mnt >> /mnt/etc/fstab
-sleep 1
+sleep 0.5
 read -t 15 -r -s -p "chaging root to /mnt enter to continue ctrl + c to break"
-sleep 1
+sleep 0.5
 arch-chroot /mnt
