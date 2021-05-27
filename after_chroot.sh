@@ -8,7 +8,9 @@ echo "Server = rsync://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /et
 
 pacman -Sy iptables-nft network-manager-applet inetutils bind alsa-utils pipewire bash-completion alacritty meld xdg-user-dirs xdg-utils ufw pipewire-alsa pipewire-pulse
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
-pacman -S --noconfirm grub-btrfs grub os-prober btrfs-progs efibootmgr ntfs-3g dosfstools mtools 
+pacman -S --noconfirm grub btrfs-progs efibootmgr ntfs-3g dosfstools mtools 
+#pacman -S --noconfirm grub-btrfs
+#pacman -S --noconfirm os-prober
 pacman -S --noconfirm ttf-roboto noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono 
 
 echo "b0tarch" >> /etc/hostname
