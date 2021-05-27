@@ -52,21 +52,7 @@ nvim /etc/mkinitcpio.conf
 
 # nvidia hook for update mkinitcpio (if kernel or driver update happens)
 mkdir /etc/pacman.d/hooks
-touch /etc/pacman.d/hooks/nvidia.hook
-echo "[Trigger]" >> /etc/pacman.d/hooks/nvidia.hook
-echo "Operation=Install" >> /etc/pacman.d/hooks/nvidia.hook
-echo "Operation=Upgrade" >> /etc/pacman.d/hooks/nvidia.hook
-echo "Operation=Remove" >> /etc/pacman.d/hooks/nvidia.hook
-echo "Type=Package" >> /etc/pacman.d/hooks/nvidia.hook
-echo "Target=nvidia" >> /etc/pacman.d/hooks/nvidia.hook
-echo "Target=linux" >> /etc/pacman.d/hooks/nvidia.hook
-echo "" >> /etc/pacman.d/hooks/nvidia.hook
-echo "[Action]" >> /etc/pacman.d/hooks/nvidia.hook
-echo "Description=Update Nvidia module in initcpio" >> /etc/pacman.d/hooks/nvidia.hook
-echo "Depends=mkinitcpio" >> /etc/pacman.d/hooks/nvidia.hook
-echo "When=PostTransaction" >> /etc/pacman.d/hooks/nvidia.hook
-echo "NeedsTargets" >> /etc/pacman.d/hooks/nvidia.hook
-echo "Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'" >> /etc/pacman.d/hooks/nvidia.hook
+cp /archinstall/nvidia.hook  /etc/pacman.d/hooks/nvidia.hook
 
 mkinitcpio -p linux
 
