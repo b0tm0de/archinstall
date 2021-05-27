@@ -41,7 +41,7 @@ mount -o noatime,space_cache=v2,subvol=@home /dev/sda5 /mnt/home
 set +e
 sleep 0.5
 
-pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode neovim git wget
+pacstrap /mnt base base-devel linux linux-headers linux-firmware intel-ucode neovim git wget reflector
 sleep 0.5
 genfstab -U /mnt >> /mnt/etc/fstab
 sleep 0.5
