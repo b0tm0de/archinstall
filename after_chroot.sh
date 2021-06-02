@@ -53,10 +53,10 @@ read -t 60 -r -s -p "btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm -fsck"
 nvim /etc/mkinitcpio.conf
 
 # nvidia hook for update mkinitcpio (if kernel or driver update happens)
-mkdir /etc/pacman.d/hooks
-cp /archinstall/nvidia.hook  /etc/pacman.d/hooks/nvidia.hook
+#mkdir /etc/pacman.d/hooks
+#cp /archinstall/nvidia.hook  /etc/pacman.d/hooks/nvidia.hook
 
-mkinitcpio -p linux
+mkinitcpio -P
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 read -t 60 -r -s -p 'now edit /etc/default/grub add GRUB_CMDLINE_LINUX_DEFAULT="nvidia-drm.modeset=1"'
