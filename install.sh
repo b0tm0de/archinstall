@@ -7,7 +7,8 @@ cd /
 
 echo "Server = http://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 echo "Server = http://ftp.linux.org.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
-echo "Server = rsync://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+echo "Server = http://mirror.host.ag/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+echo "Server = https://mirror.telepoint.bg/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 
 lsblk
 
