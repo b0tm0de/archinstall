@@ -6,8 +6,9 @@ echo "Server = http://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /etc
 echo "Server = http://ftp.linux.org.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 echo "Server = rsync://mirror.veriteknik.net.tr/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 
-pacman -Sy iptables-nft network-manager-applet inetutils bind alsa-utils pipewire bash-completion meld xdg-user-dirs xdg-utils ufw pipewire-alsa pipewire-pulse
-pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
+pacman -Syy
+pacman -S iptables-nft network-manager-applet inetutils bind alsa-utils pipewire bash-completion meld xdg-user-dirs xdg-utils ufw pipewire-alsa pipewire-pulse
+pacman -S --noconfirm nvidia-dkms nvidia-utils nvidia-settings
 pacman -S --noconfirm grub btrfs-progs efibootmgr ntfs-3g dosfstools mtools 
 #pacman -S --noconfirm grub-btrfs
 #pacman -S --noconfirm os-prober
