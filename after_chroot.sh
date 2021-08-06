@@ -8,12 +8,13 @@ echo "Server = http://mirror.host.ag/archlinux/$repo/os/$arch" >> /etc/pacman.d/
 echo "Server = https://mirror.telepoint.bg/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 
 pacman -Sy
-pacman -S iptables-nft network-manager-applet inetutils bind alsa-utils pipewire bash-completion meld xdg-user-dirs xdg-utils ufw pipewire-alsa pipewire-pulse
-pacman -S --noconfirm nvidia-dkms nvidia-utils nvidia-settings
-pacman -S --noconfirm grub btrfs-progs efibootmgr ntfs-3g dosfstools mtools 
+pacman -S iptables-nft network-manager-applet inetutils bind pipewire bash-completion meld xdg-user-dirs xdg-utils
+#pipewire-alsa pipewire-pulse ufw alsa-utils
+pacman -S nvidia nvidia-utils nvidia-settings
+pacman -S grub btrfs-progs efibootmgr ntfs-3g dosfstools mtools 
 #pacman -S --noconfirm grub-btrfs
 #pacman -S --noconfirm os-prober
-pacman -S --noconfirm ttf-roboto noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono 
+pacman -S ttf-roboto noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-dejavu ttf-jetbrains-mono 
 
 echo "b0tarch" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
