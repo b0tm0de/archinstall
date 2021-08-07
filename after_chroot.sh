@@ -7,8 +7,7 @@ echo "Server = http://ftp.linux.org.tr/archlinux/$repo/os/$arch" >> /etc/pacman.
 echo "Server = http://mirror.host.ag/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 echo "Server = https://mirror.telepoint.bg/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 
-pacman -Sy
-pacman -S iptables-nft network-manager-applet inetutils bind pipewire bash-completion meld xdg-user-dirs xdg-utils
+pacman -Sy iptables-nft network-manager-applet inetutils bind pipewire bash-completion meld xdg-user-dirs xdg-utils
 #pipewire-alsa pipewire-pulse ufw alsa-utils
 pacman -S nvidia nvidia-utils nvidia-settings
 pacman -S grub btrfs-progs efibootmgr ntfs-3g dosfstools mtools 
